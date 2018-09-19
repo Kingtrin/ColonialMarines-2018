@@ -494,9 +494,12 @@
 	health = 1000000 //Failsafe, shouldn't matter
 
 /obj/structure/window/framed/almayer/requisitions
-	name = "kevlar-weave infused bulletproof window"
-	desc = "A borosilicate glass window infused with kevlar fibres and mounted within a special shock-absorbing frame, this is gonna be seriously hard to break through."
-	health = 400
+	name = "ultra-reinforced window"
+	desc = "An ultra-reinforced window designed to keep requisitions a secure area."
+	not_damageable = 1
+	not_deconstructable = 1
+	unacidable = 1
+	health = 1000000 //Failsafe, shouldn't matter
 	window_frame = /obj/structure/window_frame/almayer/requisitions
 
 /obj/structure/window/framed/almayer/white

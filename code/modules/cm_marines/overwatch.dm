@@ -856,7 +856,6 @@
 	anchored = 1
 	density = 0
 	unacidable = 1
-	layer = ABOVE_TURF_LAYER
 	var/squad = "Alpha"
 	var/sending_package = 0
 

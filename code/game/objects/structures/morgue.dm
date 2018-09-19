@@ -200,7 +200,8 @@
 					if (!(C.species && (C.species.flags & NO_PAIN)))
 						C.emote("scream")
 
-			log_combat(user, M, "creamated", src)
+			user.attack_log +="\[[time_stamp()]\] Cremated <b>[M]/[M.ckey]</b>"
+			log_attack("\[[time_stamp()]\] <b>[user]/[user.ckey]</b> cremated <b>[M]/[M.ckey]</b>")
 			M.death(1)
 			M.ghostize()
 			cdel(M)

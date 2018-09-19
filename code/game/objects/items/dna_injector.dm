@@ -103,7 +103,8 @@
 		to_chat(user, "\red You don't have the dexterity to do this!")
 		return
 
-	log_combat(user, M, "injected", src)
+	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [name] by [user.name] ([user.ckey])</font>")
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [name] to inject [M.name] ([M.ckey])</font>")
 	log_attack("[user.name] ([user.ckey]) used the [name] to inject [M.name] ([M.ckey])")
 
 	if (user)

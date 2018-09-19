@@ -172,7 +172,8 @@
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
 			O.show_message("\red <B>[M]</B> [M.attacktext] [src]!", 1)
-		log_combat(M, src, "attacked")
+		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
+		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
 		var/datum/limb/affecting = get_limb(ran_zone(dam_zone))
@@ -432,7 +433,8 @@
 	if(href_list["internal"])
 
 		if(!usr.action_busy)
-			log_combat(usr, src, "attempted to toggle internals")
+			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their internals toggled by [usr.name] ([usr.ckey])</font>")
+			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [name]'s ([ckey]) internals</font>")
 			if(internal)
 				usr.visible_message("\red <B>[usr] is trying to disable [src]'s internals</B>", null, null, 3)
 			else
@@ -475,7 +477,8 @@
 					count = 1
 					break
 			if(count)
-				log_combat(usr, src, "attempted to remove splints")
+				attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their internals toggled by [usr.name] ([usr.ckey])</font>")
+				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [name]'s ([ckey]) internals</font>")
 
 				if(do_mob(usr, src, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
 					var/can_reach_splints = 1
@@ -501,7 +504,8 @@
 			if(w_uniform && istype(w_uniform, /obj/item/clothing/under))
 				var/obj/item/clothing/under/U = w_uniform
 				if(U.hastie)
-					log_combat(usr, src, "attempted to remove accessory ([U.hastie])")
+					attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([U.hastie.name]) removed by [usr.name] ([usr.ckey])</font>")
+					usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [name]'s ([ckey]) accessory ([U.hastie])</font>")
 					if(istype(U.hastie, /obj/item/clothing/tie/holobadge) || istype(U.hastie, /obj/item/clothing/tie/medal))
 						visible_message("\red <B>[usr] tears off \the [U.hastie] from [src]'s [U]!</B>", null, null, 5)
 					else
@@ -513,7 +517,8 @@
 	if(href_list["sensor"])
 		if(!usr.action_busy)
 
-			log_combat(usr, src, "attempted to toggle sensors")
+			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their sensors toggled by [usr.name] ([usr.ckey])</font>")
+			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [name]'s ([ckey]) sensors</font>")
 			var/obj/item/clothing/under/U = w_uniform
 			if(U.has_sensor >= 2)
 				to_chat(usr, "The controls are locked.")
@@ -1046,7 +1051,7 @@
 	else
 		target.show_message("\blue You hear a voice that seems to echo around the room: [say]")
 	usr.show_message("\blue You project your mind into [target.real_name]: [say]")
-	log_directed_talk(usr, target, say, LOG_SAY, "project mind")
+	log_say("[key_name(usr)] sent a telepathic message to [key_name(target)]: [say]")
 	for(var/mob/dead/observer/G in dead_mob_list)
 		G.show_message("<i>Telepathic message from <b>[src]</b> to <b>[target]</b>: [say]</i>")
 

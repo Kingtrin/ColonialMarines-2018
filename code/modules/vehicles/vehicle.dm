@@ -8,6 +8,7 @@
 	luminosity = 2
 	can_buckle = TRUE
 
+	var/attack_log = null
 	var/on = 0
 	var/health = 100
 	var/maxhealth = 100
@@ -82,7 +83,7 @@
 	if(M.melee_damage_upper == 0)	return
 	health -= M.melee_damage_upper
 	src.visible_message("\red <B>[M] has [M.attacktext] [src]!</B>")
-	log_combat(M, src, "attacked")
+	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	if(prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	healthcheck()

@@ -130,12 +130,16 @@
 			//Logging, including anti-rulebreak logging
 			if(src.status_flags & XENO_HOST && src.stat != DEAD)
 				if(istype(src.buckled, /obj/structure/bed/nest)) //Host was buckled to nest while infected, this is a rule break
-					log_combat(M, src, "slashed", addition="while they were infected and nested")
+					src.attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [M.name] ([M.ckey]) while they were infected and nested</B></font>")
+					M.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [src.name] ([src.ckey]) while they were infected and nested</B></font>")
 					msg_admin_ff("[key_name(M)] slashed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
 				else //Host might be rogue, needs further investigation
-					log_combat(M, src, "slashed", addition="while they were infected")
+					src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey]) while they were infected</font>")
+					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey]) while they were infected</font>")
 			else //Normal xenomorph friendship with benefits
-				log_combat(M, src, "slashed")
+				src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
+				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey])</font>")
+			log_attack("[M.name] ([M.ckey]) slashed [src.name] ([src.ckey])")
 
 			if (M.caste == "Ravager")
 				var/mob/living/carbon/Xenomorph/Ravager/R = M
@@ -274,7 +278,9 @@
 
 			M.visible_message("<span class='danger'>\The [M] slashes [src]!</span>", \
 			"<span class='danger'>You slash [src]!</span>", null, 5)
-			log_combat(M, src, "slashed")
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
+			M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey])</font>")
+			log_attack("[M.name] ([M.ckey]) slashed [src.name] ([src.ckey])")
 
 			playsound(loc, "alien_claw_flesh", 25, 1)
 			apply_damage(damage, BRUTE)
@@ -442,7 +448,7 @@
 
 //Slashing mechas
 /obj/mecha/attack_alien(mob/living/carbon/Xenomorph/M)
-	log_message("Attack by claw. Attacker - [M].", color="red")
+	log_message("Attack by claw. Attacker - [M].", 1)
 
 	if(!prob(deflect_chance))
 		take_damage((rand(M.melee_damage_lower, M.melee_damage_upper)/2))

@@ -75,7 +75,7 @@
 			return
 	if (message)
 		if(src.client)
-			log_message(message, LOG_EMOTE)
+			log_emote("[name]/[key] : [message]")
 		if (m_type & 1)
 			for(var/mob/O in viewers(src, null))
 				O.show_message(message, m_type)

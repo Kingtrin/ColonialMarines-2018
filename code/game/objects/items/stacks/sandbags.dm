@@ -46,9 +46,7 @@
 /obj/item/stack/sandbags_empty/half
 	amount = 25
 
-//max stack
-/obj/item/stack/sandbags_empty/full
-	amount = 50
+
 
 //Full sandbags
 /obj/item/stack/sandbags

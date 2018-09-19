@@ -100,7 +100,7 @@
 				if(IS_AI)
 					return AI.holopad_talk(message)
 				if(IS_ROBOT)
-					log_talk(message, LOG_SAY)
+					log_say("[key_name(src)] : [message]")
 					R.radio.talk_into(src,message,message_mode,verb,speaking)
 			return 1
 
@@ -112,10 +112,10 @@
 						to_chat(src, "\red System Error - Transceiver Disabled")
 						return
 					else
-						log_talk(message, LOG_SAY)
+						log_say("[key_name(src)] : [message]")
 						AI.aiRadio.talk_into(src,message,null,verb,speaking)
 				if(IS_ROBOT)
-					log_talk(message, LOG_SAY)
+					log_say("[key_name(src)] : [message]")
 					R.radio.talk_into(src,message,null,verb,speaking)
 			return 1
 
@@ -127,10 +127,10 @@
 							to_chat(src, "\red System Error - Transceiver Disabled")
 							return
 						else
-							log_talk(message, LOG_SAY)
+							log_say("[key_name(src)] : [message]")
 							AI.aiRadio.talk_into(src,message,message_mode,verb,speaking)
 					if(IS_ROBOT)
-						log_talk(message, LOG_SAY)
+						log_say("[key_name(src)] : [message]")
 						R.radio.talk_into(src,message,message_mode,verb,speaking)
 				return 1
 
@@ -139,7 +139,7 @@
 //For holopads only. Usable by AI.
 /mob/living/silicon/ai/proc/holopad_talk(var/message)
 
-	log_talk(message, LOG_SAY, tag="holopad")
+	log_say("[key_name(src)] : [message]")
 
 	message = trim(message)
 

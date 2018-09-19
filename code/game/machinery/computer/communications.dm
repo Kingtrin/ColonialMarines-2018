@@ -283,7 +283,7 @@
 
 				Centcomm_announce(input, usr)
 				to_chat(usr, "<span class='notice'>Message transmitted.</span>")
-				usr.log_talk(input, LOG_SAY, tag="USCM announcement")
+				log_say("[key_name(usr)] has made an USCM announcement: [input]")
 				cooldown_central = world.time
 
 		if("securitylevel")

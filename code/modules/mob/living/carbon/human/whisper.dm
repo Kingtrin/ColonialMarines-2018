@@ -6,7 +6,7 @@
 		to_chat(usr, "\red Speech is currently admin-disabled.")
 		return
 
-	log_talk(message, LOG_WHISPER)
+	log_whisper("[src.name]/[src.key] : [message]")
 
 	if (src.client)
 		if (src.client.prefs.muted & MUTE_IC)

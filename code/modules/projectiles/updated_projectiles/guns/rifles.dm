@@ -26,7 +26,6 @@
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
-	damage_falloff_mult = config.med_damage_falloff_mult
 
 /obj/item/weapon/gun/rifle/unique_action(mob/user)
 	cock(user)
@@ -43,7 +42,6 @@
 	fire_sound = "gun_pulse"
 	current_mag = /obj/item/ammo_magazine/rifle
 	attachable_allowed = list(
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,

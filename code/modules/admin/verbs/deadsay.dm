@@ -23,7 +23,7 @@
 	stafftype = "[holder.rank]"
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-	mob.log_talk(msg, LOG_DSAY)
+	log_admin("[key_name(src)] : [msg]")
 
 	if (!msg)
 		return

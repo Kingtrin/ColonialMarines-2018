@@ -42,7 +42,6 @@ one type of shotgun ammo, but I think it helps in referencing it. ~N
 	icon_state = "beanbag"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 
-
 //-------------------------------------------------------
 
 /*

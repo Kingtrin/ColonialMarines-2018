@@ -97,7 +97,7 @@
 		rendered = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> emits a [message_b]!</span></i>"
 	else
 		rendered = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> <span class='message'> hisses, '[message]'</span></span></i>"
-	log_talk(message, LOG_HIVEMIND)
+	log_hivemind("[key_name(src)] : [message]")
 
 	var/track = ""
 	var/ghostrend

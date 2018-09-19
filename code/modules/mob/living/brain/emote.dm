@@ -66,7 +66,7 @@
 			to_chat(src, "\blue Unusable emote '[act]'. Say *help for a list.")
 
 	if (message)
-		log_message(message, LOG_EMOTE)
+		log_emote("[name]/[key] : [message]")
 
 		for(var/mob/M in dead_mob_list)
 			if (!M.client || istype(M, /mob/new_player))

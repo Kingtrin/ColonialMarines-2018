@@ -99,13 +99,12 @@
 	name = "first-aid pouch"
 	desc = "It can contain autoinjectors, ointments, and bandages."
 	icon_state = "firstaid"
-	storage_slots = 5
+	storage_slots = 4
 	can_hold = list(
 					"/obj/item/stack/medical/ointment",
 					"/obj/item/reagent_container/hypospray/autoinjector/Tramadol",
 					"/obj/item/reagent_container/hypospray/autoinjector/tricord",
-					"/obj/item/stack/medical/bruise_pack",
-					"/obj/item/stack/medical/splint"
+					"/obj/item/stack/medical/bruise_pack"
 					)
 
 /obj/item/storage/pouch/firstaid/full
@@ -117,7 +116,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/Tramadol (src)
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord (src)
 	new /obj/item/stack/medical/bruise_pack (src)
-	new /obj/item/stack/medical/splint (src)
+
 
 /obj/item/storage/pouch/pistol
 	name = "sidearm pouch"
@@ -289,8 +288,7 @@
 	name = "auto-injector pouch"
 	desc = "A pouch specifically for auto-injectors."
 	icon_state = "autoinjector"
-	storage_slots = 7
-	max_storage_space = 14
+	storage_slots = 4
 	can_hold = list(
 	    "/obj/item/reagent_container/hypospray/autoinjector"
 	)
@@ -300,8 +298,7 @@
 	name = "syringe pouch"
 	desc = "It can contain syringes."
 	icon_state = "syringe"
-	storage_slots = 5
-	max_storage_space = 10
+	storage_slots = 6
 	can_hold = list("/obj/item/reagent_container/syringe")
 
 
@@ -408,16 +405,10 @@
 					"/obj/item/stack/sandbags_empty"
 					)
 
-/obj/item/storage/pouch/construction/full/New()
-	..()
-	new /obj/item/stack/sandbags_empty/half (src)
-	new /obj/item/stack/barbed_wire/small_stack (src)
-	new /obj/item/tool/shovel/etool (src)
-
 /obj/item/storage/pouch/tools
 	name = "tools pouch"
 	desc = "It's designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool."
-	storage_slots = 5
+	storage_slots = 4
 	max_w_class = 3
 	icon_state = "tools"
 	can_hold = list(
@@ -438,13 +429,3 @@
 	new /obj/item/tool/wirecutters (src)
 	new /obj/item/device/multitool (src)
 	new /obj/item/tool/wrench (src)
-	new /obj/item/tool/crowbar (src)
-
-/obj/item/storage/pouch/shotgun //New shotgun shell pouch that is actually worth a shit and will be replacing light general in vendors
-	name = "shotgun shell pouch"
-	desc = "A pouch specialized for holding shotgun ammo."
-	icon_state = "small_drop"
-	storage_slots = 4
-	draw_mode = 0
-	can_hold = list("/obj/item/ammo_magazine/handful",
-					)

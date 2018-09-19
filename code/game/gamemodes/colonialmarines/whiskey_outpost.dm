@@ -1039,7 +1039,8 @@
 		to_chat(world, "<span class='round_body'>The xenomorph hive on LV-624 remains unthreatened until then..</span>")
 		world << sound('sound/misc/Game_Over_Man.ogg')
 
-		log_game("Marines remaining: [count_humans()]\nRound time: [duration2text()]\nBig Winner:)")
+		if(round_stats) // Logging to data/logs/round_stats.log
+			to_chat(round_stats, "Marines remaining: [count_humans()]\nRound time: [duration2text()][log_end]\nBig Winner:)")
 
 	else if(finished == 2)
 		feedback_set_details("round_end_result","Marines Won")
@@ -1049,14 +1050,16 @@
 		to_chat(world, "<span class='round_body'>The USS Almayer and the 7th 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186.</span>")
 		world << sound('sound/misc/hell_march.ogg')
 
-		log_game("Marines remaining: [count_humans()]\nRound time: [duration2text()]")
+		if(round_stats) // Logging to data/logs/round_stats.log
+			to_chat(round_stats, "Marines remaining: [count_humans()]\nRound time: [duration2text()][log_end]")
 	else
 		feedback_set_details("round_end_result","no winners")
 		to_chat(world, "<span class='round_header'>NOBODY WON!</span>")
 		to_chat(world, "<span class='round_body'>How? Don't ask me...</span>")
 		world << 'sound/misc/sadtrombone.ogg'
 
-		log_game("Marines remaining: [count_humans()]\nRound time: [duration2text()]")
+		if(round_stats) // Logging to data/logs/round_stats.log
+			to_chat(round_stats, "Marines remaining: [count_humans()]\nRound time: [duration2text()][log_end]")
 
 	return 1
 

@@ -135,7 +135,8 @@
 	if(href_list["internal"])
 
 		if(!usr.action_busy)
-			log_combat(usr, src, "toggled internals (attempted)")
+			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their internals toggled by [usr.name] ([usr.ckey])</font>")
+			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [name]'s ([ckey]) internals</font>")
 			if(internal)
 				usr.visible_message("\red <B>[usr] is trying to disable [src]'s internals</B>", null, 4)
 			else
@@ -228,7 +229,8 @@
 
 				adjustBruteLoss(damage)
 
-				log_combat(M, src, "[pick(attack.attack_verb)]ed")
+				M.attack_log += text("\[[time_stamp()]\] <font color='red'>[pick(attack.attack_verb)]ed [src.name] ([src.ckey])</font>")
+				src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been [pick(attack.attack_verb)]ed by [M.name] ([M.ckey])</font>")
 				msg_admin_attack("[key_name(M)] [pick(attack.attack_verb)]ed [key_name(src)]")
 
 				updatehealth()
@@ -269,7 +271,8 @@
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
 			O.show_message("\red <B>[M]</B> [M.attacktext] [src]!", 1)
-		log_combat(M, src, "attacked")
+		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
+		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		adjustBruteLoss(damage)
 		updatehealth()

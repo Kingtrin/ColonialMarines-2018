@@ -422,4 +422,3 @@ var/list/global_mutations = list() // list of hidden mutation things
 // xeno abilities cooldown
 
 #define CRUSHER_STOMP_COOLDOWN 200
-#define XENO_SLOWDOWN_REGEN 0.4

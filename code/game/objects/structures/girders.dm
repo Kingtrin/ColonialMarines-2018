@@ -230,8 +230,8 @@
 			to_chat(user, "It needs 1 bolt removed.")
 
 /obj/structure/girder/proc/dismantle()
-	new /obj/item/stack/sheet/metal(src)
-	cdel(src)
+	health = 0
+	update_state()
 
 /obj/structure/girder/proc/repair()
 	health = 200
